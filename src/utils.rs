@@ -87,7 +87,7 @@ pub fn find_cmd< 'a >( cmds: &[ &'a str ] ) -> Option< &'a str > {
 
 pub fn unpack< I: AsRef< Path >, O: AsRef< Path > >( input_path: I, output_path: O ) -> Result< (), Box< io::Error > > {
     let output_path = output_path.as_ref();
-    let file = fs::File::open( input_path )?;
+    let file = File::open( input_path )?;
     let reader = BufReader::new( file );
     let decoder = gzip::Decoder::new( reader )?;
     let mut archive = tar::Archive::new( decoder );
