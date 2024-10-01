@@ -31,10 +31,10 @@ fn main() {
 
     let mut argv = Vec::new();
     let mut args = args().into_iter();
-    argv.extend( args.next() );
+    argv.extend(args.next());
 
     match args.next() {
-        Some( ref arg ) if arg != "web" => argv.push( arg.clone() ),
+        Some(ref arg) if arg != "web" => argv.push(arg.clone()),
         _ => {}
     }
 
@@ -45,7 +45,7 @@ fn main() {
         _ => arg,
     });
 
-    argv.extend( args );
+    argv.extend(args);
 
     if let Err(error) = run(CargoWebOpts::from_iter(argv)) {
         eprintln!("error: {}", error);
